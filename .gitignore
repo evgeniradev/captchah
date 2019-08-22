@@ -1,0 +1,6 @@
+*.gem
+.rspec_status
+
+### OS generated ###
+.DS_Store
+.DS_Store?
