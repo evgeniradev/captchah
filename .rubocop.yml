@@ -1,0 +1,38 @@
+Style/Documentation:
+  Enabled: false
+
+Style/RegexpLiteral:
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Max: 11
+
+Metrics/CyclomaticComplexity:
+  Max: 11
+  Exclude:
+    - 'spec/support/*.rb'
+
+Metrics/BlockLength:
+  Exclude:
+    - '**/*_spec.rb'
+    - 'lib/captchah/generators/puzzle.rb'
+
+Metrics/AbcSize:
+  Max: 23
+  Exclude:
+    - '**/*_spec.rb'
+    - 'lib/captchah/generators/puzzle.rb'
+
+Metrics/ClassLength:
+    Exclude:
+    - 'lib/captchah/generators/html.rb'
+    - 'lib/captchah/base64_images.rb'
+
+Metrics/MethodLength:
+  Max: 14
+  Exclude:
+    - '**/*_spec.rb'
+    - 'spec/support/*.rb'
+    - 'lib/captchah/generators/puzzle.rb'
+    - 'lib/captchah/generators/html.rb'
+    - 'lib/captchah/base64_images.rb'
