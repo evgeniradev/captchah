@@ -27,7 +27,7 @@ $ convert -version
 ## Dependencies
 
 ```
-gem 'rails', '~> 5.0'
+gem 'rails', '~> 5'
 ```
 
 ```

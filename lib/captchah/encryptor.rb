@@ -14,9 +14,10 @@ module Captchah
       private
 
       def encryptor
-        secret_key_base = Rails.application.secrets.secret_key_base
+        secret =
+          Rails.application.secrets.secret_key_base.mb_chars.limit(32).to_s
 
-        ActiveSupport::MessageEncryptor.new(secret_key_base)
+        ActiveSupport::MessageEncryptor.new(secret)
       end
     end
   end
