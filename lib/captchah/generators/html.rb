@@ -66,8 +66,9 @@ module Captchah
             background-color: white;
             border-radius: 2px;
             border: 1px solid #c1c1c1;
-            font-size: 13px;
-            height: 25px;
+            font-size: 18px !important;
+            height: 45px;
+            line-height: 0;
             margin: 5px 0;
             max-width: #{width - 12}px;
             min-width: 0;
