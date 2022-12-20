@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'captchah/generators/captcha'
-
 RSpec.describe Captchah::Generators::Captcha do
   subject { described_class }
 
@@ -42,6 +40,7 @@ RSpec.describe Captchah::Generators::Captcha do
       :reload_count,
       :reload,
       :css,
+      :csp_nonce,
       :puzzle_font
     )
   end

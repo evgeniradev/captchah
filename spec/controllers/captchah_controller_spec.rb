@@ -17,6 +17,7 @@ RSpec.describe Captchah::CaptchahController do
       :reload_count,
       :reload,
       :css,
+      :csp_nonce,
       :puzzle_font
     )
   end

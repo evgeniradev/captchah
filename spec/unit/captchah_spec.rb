@@ -1,12 +1,10 @@
 # frozen_string_literal: true
 
-require 'captchah'
+class TestController < ActionController::Base
+  include Captchah
+end
 
 RSpec.describe Captchah do
-  class TestController < ActionController::Base
-    include Captchah
-  end
-
   subject { TestController.new }
 
   it '#captchah_tag' do

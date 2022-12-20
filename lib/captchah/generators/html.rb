@@ -13,6 +13,7 @@ module Captchah
         reload_label
         reload
         css
+        csp_nonce
       ].freeze
 
       def self.call(*args)
@@ -49,7 +50,7 @@ module Captchah
       def style_tag
         return unless css
 
-        "<style type='text/css'>
+        "<style type='text/css' nonce='#{csp_nonce}'>
           ##{container_id} {
             background-color: #f9f9f9;
             border-radius: 2px;
@@ -80,6 +81,9 @@ module Captchah
           ##{container_id} .captchah-reload-animation {
             margin-top: 11px;
             transform: translateY(-50%);
+          }
+          ##{container_id} .hidden {
+            display: none;
           }
 
           ##{container_id} .captchah-puzzle,
@@ -143,15 +147,13 @@ module Captchah
       def reload_animation_tag
         '<img ' \
         "src='#{"data:image/gif;base64,#{Base64Images.loader}"}' " \
-        "style='display: none;' " \
-        "class='captchah-reload-animation'>"
+        "class='captchah-reload-animation hidden'>"
       end
 
       def reload_tag
         return unless reload
 
         '<span ' \
-        "onclick='captchah(this)' " \
         "data-payload='#{reload_payload}' " \
         "class='captchah-reload'>" \
           "#{reload_label}" \
@@ -161,14 +163,14 @@ module Captchah
       def javascript_tag
         return unless reload
 
-        "<script type='text/javascript'>
-          var captchah = function(reload) {
+        "<script type='text/javascript' nonce='#{csp_nonce}'>
+          var captchah = function(el) {
             var captchahLoaderAnimation = function(el_show, el_hide){
-              el_hide.style.display='none';
-              el_show.style.display='inline-block';
+              el_show.classList.remove('hidden');
+              el_hide.classList.add('hidden');
             };
 
-            captchahLoaderAnimation(reload.previousSibling, reload);
+            captchahLoaderAnimation(el.previousSibling, el);
 
             var xhr = new XMLHttpRequest();
             xhr.open('POST', '/captchah');
@@ -176,15 +178,25 @@ module Captchah
             xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
             xhr.onload = function() {
               if (xhr.status === 200) {
-                reload.parentNode.outerHTML = xhr.responseText;
+                el.parentNode.outerHTML = xhr.responseText;
               }
               else if (xhr.status !== 200) {
                 console.log('Error: Unable to change captcha.');
-                captchahLoaderAnimation(reload, reload.previousSibling);
+                captchahLoaderAnimation(el, el.previousSibling);
               }
             };
-            xhr.send(JSON.stringify({captchah: reload.dataset.payload}));
+            xhr.send(JSON.stringify({captchah: el.dataset.payload}));
           };
+
+          var button = document.querySelector('##{container_id} .captchah-reload');
+          var container = document.getElementById('#{container_id}');
+          var containerParent = container.parentNode;
+
+          containerParent.addEventListener('click', function(e) {
+            console.log(e);
+            if([...e.target.classList].includes('captchah-reload'))
+              captchah(e.target);
+          });
         </script>"
       end
 

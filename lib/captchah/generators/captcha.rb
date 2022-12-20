@@ -27,6 +27,7 @@ module Captchah
         @reload_count = args[:reload_count] || DEFAULT_RELOAD_COUNT
         @reload = args[:reload] == false ? false : allow_reload?
         @css = (args[:css] != false)
+        @csp_nonce = args[:csp_nonce]
         @puzzle_font = args[:puzzle_font] || DEFAULT_PUZZLE_FONT
       end
 
@@ -43,6 +44,7 @@ module Captchah
         :reload_count,
         :reload,
         :css,
+        :csp_nonce,
         :puzzle_font
       )
 
@@ -58,7 +60,8 @@ module Captchah
           reload_payload: reload_payload,
           reload_label: reload_label,
           reload: reload,
-          css: css
+          css: css,
+          csp_nonce: csp_nonce
         )
       end
 
@@ -88,6 +91,7 @@ module Captchah
           reload_count: reload_count,
           reload: reload,
           css: css,
+          csp_nonce: csp_nonce,
           puzzle_font: puzzle_font
         )
       end

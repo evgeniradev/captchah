@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'captchah/base64_images'
-
 RSpec.describe Captchah::Base64Images do
   subject { described_class }
 

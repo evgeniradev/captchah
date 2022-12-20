@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require 'mini_magick'
-require 'captchah/generators/puzzle'
-
 RSpec.describe Captchah::Generators::Puzzle do
   subject { described_class }
 

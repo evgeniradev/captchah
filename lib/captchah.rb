@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'mini_magick'
 require 'captchah/version'
 require 'captchah/generators/html'
 require 'captchah/generators/puzzle'

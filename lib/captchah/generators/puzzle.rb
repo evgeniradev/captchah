@@ -43,7 +43,7 @@ module Captchah
           c.draw("line 0,#{rand(25..35)} 290,30") if difficulty > 1
           c.fill(rgba(color1, opacity))
           c.pointsize(26)
-          c.draw("text 82,#{rand(25..40)} '#{truth[3..-1]}'")
+          c.draw("text 82,#{rand(25..40)} '#{truth[3..-1]}'") # rubocop:disable Style/SlicingWithRange
           c.draw("line 0,#{rand(10..20)} 400,20") if difficulty > 1
 
           if difficulty < 3
@@ -83,14 +83,11 @@ module Captchah
       end
 
       def image
-        @image ||=
-          begin
-            base64_image = Base64Images.puzzle_background
-            decoded_image = Base64.strict_decode64(base64_image)
-            MiniMagick::Image.read(decoded_image)
-          rescue NameError => e
-            raise Error, 'Missing MiniMagick.' if e.to_s.include?('MiniMagick')
-          end
+        @image ||= begin
+          base64_image = Base64Images.puzzle_background
+          decoded_image = Base64.strict_decode64(base64_image)
+          MiniMagick::Image.read(decoded_image)
+        end
       end
 
       def opacity

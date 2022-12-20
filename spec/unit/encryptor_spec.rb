@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'captchah/encryptor'
-
 RSpec.describe Captchah::Encryptor do
   subject { described_class }
 

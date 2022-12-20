@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'captchah/generators/truth'
-
 RSpec.describe Captchah::Generators::Truth do
   subject { described_class }
 

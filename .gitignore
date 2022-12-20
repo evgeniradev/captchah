@@ -1,5 +1,6 @@
 *.gem
 .rspec_status
+Gemfile.lock
 
 ### OS generated ###
 .DS_Store

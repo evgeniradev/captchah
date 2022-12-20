@@ -1,9 +1,11 @@
 # frozen_string_literal: true
 
 require 'rails'
+require 'mini_magick'
+require 'active_support/time'
+require 'action_controller'
 require 'captchah'
 require 'support/all_args'
-require 'action_controller'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

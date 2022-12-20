@@ -7,7 +7,7 @@ A Rails captcha gem that attempts to determine whether or not a user is human.
 Add this line to your application's Gemfile:
 
 ```
-gem 'captchah', '~> 1.1'
+gem 'captchah'
 ```
 
 And execute:
@@ -81,6 +81,7 @@ captchah_tag(
   reload_max: 5,             # Integer value                    Default: 5
   reload: true,              # Boolean value                    Default: true
   css: true,                 # Boolean value                    Default: true
+  csp_nonce: 'csp-id',       # String value                     Default: nil
   puzzle_font: 'Verdana'     # String value                     Default: 'Verdana'
 )
 ```
