@@ -41,6 +41,7 @@ RSpec.describe Captchah::Generators::Captcha do
       :reload,
       :css,
       :csp_nonce,
+      :required,
       :puzzle_font
     )
   end

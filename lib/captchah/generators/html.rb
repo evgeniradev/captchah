@@ -14,6 +14,7 @@ module Captchah
         reload
         css
         csp_nonce
+        required
       ].freeze
 
       def self.call(*args)
@@ -133,6 +134,7 @@ module Captchah
       def guess_tag
         '<input ' \
         "type='text' " \
+        "#{'required' if required} " \
         "autocomplete='off' " \
         "name='captchah[guess]' " \
         "class='captchah-guess'>"

@@ -18,7 +18,7 @@ Metrics/BlockLength:
     - 'lib/captchah/generators/puzzle.rb'
 
 Metrics/AbcSize:
-  Max: 25
+  Max: 27
   Exclude:
     - '**/*_spec.rb'
     - 'lib/captchah/generators/puzzle.rb'
@@ -29,7 +29,7 @@ Metrics/ClassLength:
     - 'lib/captchah/base64_images.rb'
 
 Metrics/MethodLength:
-  Max: 15
+  Max: 16
   Exclude:
     - '**/*_spec.rb'
     - 'spec/support/*.rb'

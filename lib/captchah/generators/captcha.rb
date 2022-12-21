@@ -28,6 +28,7 @@ module Captchah
         @reload = args[:reload] == false ? false : allow_reload?
         @css = (args[:css] != false)
         @csp_nonce = args[:csp_nonce]
+        @required = !!args[:required] # rubocop:disable Style/DoubleNegation
         @puzzle_font = args[:puzzle_font] || DEFAULT_PUZZLE_FONT
       end
 
@@ -45,6 +46,7 @@ module Captchah
         :reload,
         :css,
         :csp_nonce,
+        :required,
         :puzzle_font
       )
 
@@ -61,7 +63,8 @@ module Captchah
           reload_label: reload_label,
           reload: reload,
           css: css,
-          csp_nonce: csp_nonce
+          csp_nonce: csp_nonce,
+          required: required
         )
       end
 
@@ -92,6 +95,7 @@ module Captchah
           reload: reload,
           css: css,
           csp_nonce: csp_nonce,
+          required: required,
           puzzle_font: puzzle_font
         )
       end

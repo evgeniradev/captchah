@@ -82,6 +82,7 @@ captchah_tag(
   reload: true,              # Boolean value                    Default: true
   css: true,                 # Boolean value                    Default: true
   csp_nonce: 'csp-id',       # String value                     Default: nil
+  required: true,            # Boolean value                    Default: false
   puzzle_font: 'Verdana'     # String value                     Default: 'Verdana'
 )
 ```

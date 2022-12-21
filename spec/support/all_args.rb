@@ -17,6 +17,7 @@ module AllArgs
     reload
     css
     csp_nonce
+    required
     puzzle_font
   ].freeze
 
@@ -36,6 +37,8 @@ module AllArgs
           3
         when :csp_nonce
           nil
+        when :required
+          false
         when :reload, :css
           true
         else

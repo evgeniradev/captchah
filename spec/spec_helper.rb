@@ -3,6 +3,7 @@
 require 'rails'
 require 'mini_magick'
 require 'active_support/time'
+require 'active_support/core_ext/string/output_safety'
 require 'action_controller'
 require 'captchah'
 require 'support/all_args'

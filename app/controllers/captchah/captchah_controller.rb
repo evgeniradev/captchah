@@ -38,6 +38,7 @@ module Captchah
         reload: payload[:reload],
         css: payload[:css],
         csp_nonce: payload[:csp_nonce],
+        required: payload[:required],
         puzzle_font: payload[:puzzle_font]
       }
     end
