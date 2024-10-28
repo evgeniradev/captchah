@@ -16,7 +16,7 @@ module Captchah
       return :valid if guess == truth_payload[:truth].downcase
 
       :invalid
-    rescue ArgumentError, MessageEncryptor::InvalidMessage
+    rescue ArgumentError, ActiveSupport::MessageEncryptor::InvalidMessage
       :invalid
     end
   end
